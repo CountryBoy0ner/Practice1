@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        BusinessTrip georgia = new BusinessTrip(13,3,4,"Timur Verhkovodko");
+        georgia.show();
     }
 }
