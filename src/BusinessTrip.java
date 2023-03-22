@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class BusinessTrip {
 
-    private final static int rate = 3070;
+    private final static int RATE = 3070;
     private int transport;
     private int days;
     private String account;
@@ -43,11 +40,12 @@ public class BusinessTrip {
     }
 
     public int getTotal() {
-        return this.transport + this.days * rate;
+        return this.transport + this.days * RATE;
     }
 
     public void show() {
-        System.out.println("rate =" + separateMoney(rate) + "\n" + "account =" + getAccount() + "\n" + "transport =" + separateMoney(getTransport()) + "\n" + "days =" + getDays() + "\n" + "total =" + separateMoney(getTotal()));
+
+        System.out.println("rate =" + separateMoney(RATE) + "\n" + "account =" + getAccount() + "\n" + "transport =" + separateMoney(getTransport()) + "\n" + "days =" + getDays() + "\n" + "total =" + separateMoney(getTotal()));
     }
 
     public String toString() {
