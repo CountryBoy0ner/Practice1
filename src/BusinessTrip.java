@@ -1,23 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BusinessTrip {
 
-    private int rate;
+    private final static int rate = 3070;
     private int transport;
     private int days;
     private String account;
 
 
-
-    public BusinessTrip(int rate, int transport, int days, String account) {
-        this.rate = rate;
+    public BusinessTrip( int transport, int days, String account) {
         this.transport = transport;
         this.days = days;
         this.account = account;
     }
-    public BusinessTrip() {
-    }
 
-    public int getRate() {
-        return rate;
+    public BusinessTrip() {
     }
 
     public int getTransport() {
@@ -30,10 +28,6 @@ public class BusinessTrip {
 
     public String getAccount() {
         return account;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
     }
 
     public void setTransport(int transport) {
@@ -49,15 +43,24 @@ public class BusinessTrip {
     }
 
     public int getTotal() {
-        return getTransport() + getDays() * getRate();
+        return this.transport + this.days * rate;
     }
 
     public void show() {
-        System.out.println("rate =" + getRate() + "\n" + "account =" + getAccount() + "\n" + "transport =" + getTransport() + "\n" + "days =" + getDays() + "\n" + "total =" + getTotal());
+        System.out.println("rate =" + separateMoney(rate) + "\n" + "account =" + getAccount() + "\n" + "transport =" + separateMoney(getTransport()) + "\n" + "days =" + getDays() + "\n" + "total =" + separateMoney(getTotal()));
     }
 
     public String toString() {
-        return rate + ";" + transport + ";" + days + ";" + account;
+        return String.format("%s; %s; %d; %s", account, separateMoney(transport),days,separateMoney(getTotal()));
+    }
 
+
+    public String separateMoney(int number) {
+        int euros = number / 100;
+        int cents = number-euros*100;
+        if (cents<10){
+            return String.format("%s.%s%s", euros, 0, cents);
+        }
+        return String.format("%s.%s", euros, cents);
     }
 }
